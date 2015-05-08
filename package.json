@@ -7,6 +7,6 @@
   },
   "dependencies": {
     "art": "^0.10.0",
-    "react-native": "git://github.com/facebook/react-native.git#master"
+    "react-native": "0.4.2"
   }
 }
