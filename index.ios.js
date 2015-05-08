@@ -9,6 +9,7 @@ var {
   AppRegistry,
   PanResponder,
   View,
+  Text,
 } = React;
 
 var TimerMixin = require('react-timer-mixin');
@@ -25,7 +26,6 @@ var {
 var TOUCH_UP_DRAG = 0.978;
 var TOUCH_DOWN_DRAG = 0.9;
 var MAX_VEL = 11;
-var TOUCH_ACCEL = 3;
 var BASE_VEL = 0.15;
 
 var ArtExample = React.createClass({
@@ -57,13 +57,27 @@ var ArtExample = React.createClass({
   },
 
   _handlePanResponderGrant(e: Object, gestureState: Object) {
-    console.log('grant!');
     this.setState({drag: TOUCH_DOWN_DRAG});
   },
 
   _handlePanResponderMove(e: Object, gestureState: Object) {
-    var nextVelocity = Math.min(this.state.velocity + TOUCH_ACCEL, MAX_VEL);
+    var nextVelocity = Math.min(this.state.velocity + (gestureState.vx * 5), MAX_VEL);
+
+    if (this.state.vx < 0 && this.state.velocity > 0) {
+      nextVelocity = 0;
+    } else if (this.state.vx > 0 && this.state.velocity < 0) {
+      nextVelocity = 0;
+    }
+
+    if (nextVelocity < (-1 * MAX_VEL)) {
+      nextVelocity = -1 * MAX_VEL;
+    }
+
     this.setState({velocity: nextVelocity, drag: TOUCH_UP_DRAG});
+  },
+
+  _handlePanResponderEnd(e: Object, gestureState: Object) {
+    // Do nothing on end
   },
 
   componentDidMount() {
@@ -84,6 +98,7 @@ var ArtExample = React.createClass({
           height={300}>
           {this.renderGraphic(this.state.degrees)}
         </Surface>
+        <Text style={{color: "#cccccc", fontSize: 18}}>Swipe left or right to spin</Text>
       </View>
     );
   },
