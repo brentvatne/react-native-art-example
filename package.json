@@ -1,0 +1,12 @@
+{
+  "name": "ArtExample",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node_modules/react-native/packager/packager.sh"
+  },
+  "dependencies": {
+    "art": "^0.10.0",
+    "react-native": "git://github.com/facebook/react-native.git#master"
+  }
+}
