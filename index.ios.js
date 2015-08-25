@@ -14,7 +14,7 @@ var {
 
 var TimerMixin = require('react-timer-mixin');
 
-var ReactART = require('ReactIOSART');
+var ReactART = require('ReactNativeART');
 var {
   Surface,
   Path,

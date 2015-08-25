@@ -1,12 +1,12 @@
 # react-native-art-example
 
 To use React ART on your react-native project, install react-native
-`0.4.2` and then `npm i art --save`. Add `ART.xcodeproj` from
+`^0.7.1` and then `npm i art --save`. Add `ART.xcodeproj` from
 `node_modules/react-native/React/Libraries/ART` to your
 Libraries and link `libART.a`. Now you can require it:
 
 ```javascript
-var ReactART = require('ReactIOSART');
+var ReactART = require('ReactNativeART');
 var {
   LinearGradient,
   RadialGradient,
